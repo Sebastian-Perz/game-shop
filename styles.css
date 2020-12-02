@@ -1,10 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:400,700");
 
 :root {
-  --primaryColor: #f09d51;
+  --themeColor: #97ec5d;
   --mainWhite: #fff;
   --mainBlack: #222;
-  --mainGrey: #ececec;
+  --mainGrey: #c387c9;
   --mainSpacing: 0.1rem;
   --mainTransition: all 0.3s linear;
 }
@@ -70,7 +70,7 @@ body {
 .hero {
   min-height: 60vh;
   max-height: 50vh;
-  background: url("./images/hero-bcg.jpeg") center/cover no-repeat;
+  background: url("./pics/banner.jpg") center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -181,6 +181,26 @@ body {
   letter-spacing: var(--mainSpacing);
   color: var(--primaryColor);
   text-align: center;
+}
+/* --------------- Menu ---------------- */
+
+.menu-button {
+  cursor: pointer;
+}
+
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  transition: var(--mainTransition);
+  background: rgb(240, 157, 81, 0.5);
+  z-index: 2;
+  visibility: hidden;
+}
+.showMenu {
+  transform: translateX(0);
 }
 
 /* --------------- Cart ---------------- */

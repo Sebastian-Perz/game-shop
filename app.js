@@ -22,6 +22,7 @@ function myFunction() {
   }
 }
 // variables
+const menuButton = document.querySelector(".menu-button");
 const cartButton = document.querySelector(".cart-btn");
 const closeCartButton = document.querySelector(".close-cart");
 const clearCartButton = document.querySelector(".clear-cart");
@@ -31,6 +32,7 @@ const cartItems = document.querySelector(".cart-items");
 const cartTotal = document.querySelector(".cart-total");
 const cartContent = document.querySelector(".cart-content");
 const productsDOM = document.querySelector(".products-center");
+const menuOverlay = document.querySelector(".menu-overlay");
 
 // my main cart
 let cart = [];
@@ -167,11 +169,16 @@ class UI {
     cartDOM.classList.add("showCart");
   }
 
+  showMenu() {
+    menuOverlay.classList.add("transparentBcg");
+    cartDOM.classList.add("showMenu");
+  }
   setupApp() {
     cart = Storage.getCart();
     this.setCartValues(cart);
     this.populateCart(cart);
     cartButton.addEventListener("click", this.showCart);
+    menuButton.addEventListener("click", this.showMenu);
     closeCartButton.addEventListener("click", this.hideCart);
   }
 
