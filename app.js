@@ -32,7 +32,6 @@ const cartItems = document.querySelector(".cart-items");
 const cartTotal = document.querySelector(".cart-total");
 const cartContent = document.querySelector(".cart-content");
 const productsDOM = document.querySelector(".products-center");
-const menuOverlay = document.querySelector(".menu-overlay");
 
 // my main cart
 let cart = [];
@@ -69,15 +68,14 @@ class Products {
 
 // display products
 class UI {
-  displayProducts(products) {
+  displayProducts(products, searchTerm) {
     let result = "";
     products
-      .filter((item) => item.genre === "racing")
+      .filter((item) => item.type === searchTerm)
       .forEach((product) => {
         result =
           result +
           `
-        <!-- single product -->
         <article class="product">
           <div class="img-container">
             <img
@@ -93,7 +91,6 @@ class UI {
           <h3>${product.title}</h3>
           <h4>${product.price} PLN</h4>
         </article>
-        <!-- end of single product -->
         `;
       });
 
@@ -152,8 +149,8 @@ class UI {
     <img src="${item.image}" alt="product" />
             <div>
               <h4>${item.title} ${item.platform}</h4>
-              <h5>${item.price}$</h5>
-              <span class="remove-item" data-id=${item.id}>remove</span>
+              <h5>${item.price}PLN</h5>
+              <span class="remove-item" data-id=${item.id}>Usuń</span>
             </div>
             <div>
               <i class="fas fa-chevron-up" data-id=${item.id}></i>
@@ -169,12 +166,9 @@ class UI {
     cartDOM.classList.add("showCart");
   }
 
-  showMenu() {
-    menuOverlay.classList.add("transparentBcg");
-    cartDOM.classList.add("showMenu");
-  }
   setupApp() {
     cart = Storage.getCart();
+
     this.setCartValues(cart);
     this.populateCart(cart);
     cartButton.addEventListener("click", this.showCart);
@@ -190,14 +184,15 @@ class UI {
     cartOverlay.classList.remove("transparentBcg");
     cartDOM.classList.remove("showCart");
   }
+  hideMenu() {
+    menuOverlay.classList.remove("transparentBcg");
+    menuDOM.classList.remove("showMenu");
+  }
 
   cartLogic() {
-    // clear cart button
     clearCartButton.addEventListener("click", () => {
       this.clearCart();
     });
-
-    // cart functionality
 
     cartContent.addEventListener("click", (event) => {
       if (event.target.classList.contains("remove-item")) {
@@ -287,7 +282,7 @@ document.addEventListener("DOMContentLoaded", () => {
   products
     .getProdcuts()
     .then((products) => {
-      ui.displayProducts(products);
+      ui.displayProducts(products, "game");
       Storage.saveProducts(products);
     })
     .then(() => {

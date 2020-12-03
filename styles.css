@@ -1,12 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:400,700");
 
 :root {
-  --themeColor: #97ec5d;
-  --mainWhite: #fff;
+  --themeColor: #c3ecf1;
+  --mainWhite: whitesmoke;
   --mainBlack: #222;
-  --mainGrey: #c387c9;
+  --mainOrange: #0dcbe4;
   --mainSpacing: 0.1rem;
-  --mainTransition: all 0.3s linear;
+  --mainTransititon: all 0.3s linear;
 }
 * {
   margin: 0;
@@ -19,10 +19,20 @@ body {
   font-family: "Lato", sans-serif;
 }
 
-.logo-container {
-  min-height: 200px;
+h2 {
+  letter-spacing: var(--mainSpacing);
 }
-/* --------------- Navbar ---------------- */
+
+.ad-container {
+  height: 200px;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: gray;
+  font-family: "Cambria", sans-serif;
+}
+
 .navbar {
   position: fixed;
   top: 0;
@@ -39,7 +49,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: rgb(201, 226, 87);
+  background-color: var(--themeColor);
 }
 .sticky {
   position: fixed;
@@ -61,12 +71,8 @@ body {
   background: var(--primaryColor);
   padding: 0 5px;
   border-radius: 30%;
-  color: var(--mainWhite);
+  color: var(--mainOrange);
 }
-
-/* --------------- End of Navbar ---------------- */
-
-/* --------------- Hero ---------------- */
 .hero {
   min-height: 60vh;
   max-height: 50vh;
@@ -82,7 +88,7 @@ body {
 }
 .banner {
   text-align: center;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(89, 208, 255, 0.8);
   display: inline-block;
   padding: 2rem;
 }
@@ -97,19 +103,17 @@ body {
   text-transform: uppercase;
   letter-spacing: var(--mainSpacing);
   font-size: 1rem;
-  background: var(--primaryColor);
-  color: var(--mainBlack);
+  max-width: 400px;
+  background: var(--mainBlack);
+  color: var(--mainWhite);
   border: 1px solid var(--primaryColor);
-  transition: var(--mainTransition);
+  transition: var(--mainTransititon);
   cursor: pointer;
 }
 .banner-btn:hover {
-  background: transparent;
+  background: var(--themeColor);
   color: var(--primaryColor);
 }
-/* --------------- End of Hero ---------------- */
-/* --------------- Products ---------------- */
-
 .products {
   padding: 4rem 0;
 }
@@ -139,18 +143,20 @@ body {
   top: 80%;
   right: 0;
   width: 50%;
-  background: var(--primaryColor);
+  background: var(--mainBlack);
+  color: var(--mainWhite);
   border: none;
   text-transform: uppercase;
   padding: 0.5rem 0.75rem;
   letter-spacing: var(--mainSpacing);
   font-weight: bold;
-  transition: var(--mainTransition);
+  transition: var(--mainTransititon);
   transform: translateX(101%);
   cursor: pointer;
 }
 .bag-btn:hover {
-  color: var(--mainWhite);
+  color: var(--mainBlack);
+  background-color: var(--themeColor);
 }
 .fa-shopping-cart {
   margin-right: 0.5rem;
@@ -162,7 +168,7 @@ body {
   display: block;
   width: 100%;
   min-height: 12rem;
-  transition: var(--mainTransition);
+  transition: var(--mainTransititon);
 }
 .img-container:hover .product-img {
   opacity: 0.5;
@@ -182,36 +188,18 @@ body {
   color: var(--primaryColor);
   text-align: center;
 }
-/* --------------- Menu ---------------- */
-
 .menu-button {
   cursor: pointer;
 }
 
-.menu-overlay {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  transition: var(--mainTransition);
-  background: rgb(240, 157, 81, 0.5);
-  z-index: 2;
-  visibility: hidden;
-}
-.showMenu {
-  transform: translateX(0);
-}
-
-/* --------------- Cart ---------------- */
 .cart-overlay {
   position: fixed;
   top: 0;
   right: 0;
   width: 100%;
   height: 100%;
-  transition: var(--mainTransition);
-  background: rgb(240, 157, 81, 0.5);
+  transition: var(--mainTransititon);
+  background: rgba(0, 0, 0, 0.5);
   z-index: 2;
   visibility: hidden;
 }
@@ -223,9 +211,9 @@ body {
   height: 100%;
   overflow: scroll;
   z-index: 3;
-  background: rgb(231, 226, 221);
+  background: rgba(89, 208, 255, 0.95);
   padding: 1.5rem;
-  transition: var(--mainTransition);
+  transition: var(--mainTransititon);
   transform: translateX(100%);
 }
 .showCart {
@@ -244,6 +232,9 @@ body {
 .close-cart {
   font-size: 1.7rem;
   cursor: pointer;
+}
+.close-cart:hover {
+  color: white;
 }
 .cart h2 {
   text-transform: capitalize;
